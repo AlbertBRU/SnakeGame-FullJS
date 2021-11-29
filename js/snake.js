@@ -2,6 +2,8 @@
 
 var snake = {
 
+    snakeLength: 0,
+
     autoMove: function() {
         document.querySelector('.start').style.display = "none";
         document.querySelector('.points').style.display = "";
@@ -26,7 +28,7 @@ var snake = {
         // We select the cell to move, thanks to the right data-cell
         var siblingCell = document.querySelector('[data-row = "'+currentDataRow+'"][data-cell = "'+siblingDataCell+'"]');
         // if the sibling cell doesn't exist (if the user want to get out of the board)
-        if (!siblingCell) {
+        if (!siblingCell || siblingCell.classList.contains('body')) {
             looserAlert.looserAlert();
             // we return to exit the function and prevent all classes to disapear!
             return;
@@ -39,7 +41,7 @@ var snake = {
         else if (currentCell.classList.contains('cellCurrent-bottom')) {
         const siblingDataRow = parseInt(currentDataRow) + 1;
         var siblingCell = document.querySelector('[data-row = "'+siblingDataRow+'"][data-cell = "'+currentDataCell+'"]');
-        if (!siblingCell) {
+        if (!siblingCell || siblingCell.classList.contains('body')) {
             looserAlert.looserAlert();
             // we return to exit the function and prevent all classes to disapear!
             return;
@@ -51,7 +53,7 @@ var snake = {
         else if (currentCell.classList.contains('cellCurrent-left')) {
         const siblingDataCell = parseInt(currentDataCell) - 1;
         var siblingCell = document.querySelector('[data-row = "'+currentDataRow+'"][data-cell = "'+siblingDataCell+'"]');
-        if (!siblingCell) {
+        if (!siblingCell || siblingCell.classList.contains('body')) {
             looserAlert.looserAlert();
             // we return to exit the function and prevent all classes to disapear!
             return;
@@ -63,7 +65,7 @@ var snake = {
         else if (currentCell.classList.contains('cellCurrent-top')) {
         const siblingDataRow = parseInt(currentDataRow) - 1;
         var siblingCell = document.querySelector('[data-row = "'+siblingDataRow+'"][data-cell = "'+currentDataCell+'"]');
-        if (!siblingCell) {
+        if (!siblingCell || siblingCell.classList.contains('body')) {
             looserAlert.looserAlert();
             // we return to exit the function and prevent all classes to disapear!
             return;
@@ -71,6 +73,8 @@ var snake = {
             siblingCell.classList.add('cellCurrent', 'cellCurrent-top');
         }
         }
+        snake.setBody(currentCell);
+
         // In any success case, we will remove the classes cellCurrent, because we move, and the position of the cursor attached to the current cell class.
         currentCell.classList.remove('cellCurrent', 'cellCurrent-right', 'cellCurrent-bottom', 'cellCurrent-left', 'cellCurrent-top');
         // This if condition will f0f everything behind him, except Start Cell.
@@ -78,7 +82,7 @@ var snake = {
         //   currentCell.classList.add('cellPath');
         // }
         if (siblingCell.classList.contains('apple')) {
-        snake.eat(siblingCell);
+            snake.eat(siblingCell);
         }
         // if siblingCell contains -> snake part
         // app.bite() -> LooserAlert
@@ -119,5 +123,28 @@ var snake = {
         document.querySelector('.points').textContent = "points : "+app.points;
         siblingCell.classList.remove('apple')
         board.randomApple();
+        snake.snakeLength +=1;
     },
+    
+    setBody: function (currentCell) {
+        if (snake.snakeLength > 0) {
+            currentCell.classList.add('body');
+            if (currentCell.classList.contains('cellCurrent-left')){
+                currentCell.classList.add('body-left')
+            }
+            if (currentCell.classList.contains('cellCurrent-top')){
+                currentCell.classList.add('body-top')
+            }
+            if (currentCell.classList.contains('cellCurrent-right')){
+                currentCell.classList.add('body-right')
+            }
+            if (currentCell.classList.contains('cellCurrent-bottom')){
+                currentCell.classList.add('body-bottom')
+            }
+            let timeToRemove = snake.snakeLength*200;
+            window.setTimeout(function() {            
+            currentCell.classList.remove('body', 'body-bottom', 'body-right', 'body-top', 'body-left');
+        }, timeToRemove);
+        }
+    }
 }

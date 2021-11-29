@@ -28,6 +28,7 @@ var board = {
           }
         }
         board.randomStartSnake();
+        snake.snakeLength = 0;
         board.randomApple();
         console.log(app.points)
     },

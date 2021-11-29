@@ -63,26 +63,32 @@ body {
 
 .apple {
   background-image: url("../img/appleIconSnake.png");
-  background-size: cover;}
+  background-size: cover;
+}
 
 .cellCurrent {
   background-image: url("../img/snakeHeadRight.png");
   background-size: cover;
 }
 
-.cellCurrent-top {
+.body {
+  background-image: url("../img/snakebod.png");
+  background-size: cover;
+}
+
+.cellCurrent-top, .body-top {
   transform: rotate(-90deg);
 }
 
-.cellCurrent-bottom {
+.cellCurrent-bottom, .body-bottom {
   transform: rotate(90deg);
 }
 
-.cellCurrent-left {
+.cellCurrent-left, .body-left {
   transform: rotate(180deg);
 }
 
-.cellCurrent-right {
+.cellCurrent-right, .body-right {
     transform: rotate(0deg);
 }
 
