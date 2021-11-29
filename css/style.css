@@ -62,12 +62,12 @@ body {
 
 
 .apple {
-  background-color: green;
-}
+  background-image: url("../img/appleIconSnake.png");
+  background-size: cover;}
 
 .cellCurrent {
-  background-color: red;
-  border-right: 2px solid black;
+  background-image: url("../img/snakeHeadRight.png");
+  background-size: cover;
 }
 
 .cellCurrent-top {

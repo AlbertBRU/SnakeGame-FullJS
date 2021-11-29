@@ -5,7 +5,7 @@ var looserAlert = {
     looserAlert: function() {
         clearInterval(intervalId)
         // We put an alert to indicate the player he can't move that way anymore.
-        alert('You loose');
+        alert('You lose');
         document.querySelector('.points').style.display = "none";
         document.querySelector('.tryAgain').style.display = "";
         document.querySelector('.bestScore').style.display = "";
