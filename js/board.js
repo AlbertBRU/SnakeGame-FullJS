@@ -55,7 +55,12 @@ var board = {
         const randomDataCellApple = board.randomNumberGenerator();
         // Get the new starting cell according to the random generated numbers
         const apple = document.querySelector('[data-row = "'+randomDataRowApple+'"][data-cell = "'+randomDataCellApple+'"]');
-        // Add the classes to the new random selected cell
-        apple.classList.add('apple')
+        
+        if(apple.classList.contains('body') || apple.classList.contains('cellCurrent')) {
+            board.randomApple();
+        }else {
+            // Add the classes to the new random selected cell
+            apple.classList.add('apple')
+        }
     },
 }

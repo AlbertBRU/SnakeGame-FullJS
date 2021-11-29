@@ -38,7 +38,7 @@ body {
 
 #board {
   margin-top: 1rem;
-  background-color: rgb(188, 192, 125);
+  background-color: lightgrey;
   border: 1px solid black;
   /* height: 600px;
   width: 600px; */
@@ -70,25 +70,33 @@ body {
   background-image: url("../img/snakeHeadRight.png");
   background-size: cover;
 }
+.tail {
+  background-image: url("../img/snaketail.png");  
+  background-size: cover;
+}
 
 .body {
   background-image: url("../img/snakebod.png");
   background-size: cover;
 }
+.turnTheSnake {
+  background-image: url("../img/snaketurn.png");
+  background-size: cover;
+}
 
-.cellCurrent-top, .body-top {
+.cellCurrent-top, .body-top, .tail-top, .turn-left-top {
   transform: rotate(-90deg);
 }
 
-.cellCurrent-bottom, .body-bottom {
+.cellCurrent-bottom, .body-bottom, .tail-bottom, .turn-right-bottom, .turn-top-left, .turn-bot-right {
   transform: rotate(90deg);
 }
 
-.cellCurrent-left, .body-left {
+.cellCurrent-left, .body-left, .tail-left, .turn-right-top, .turn-bot-left {
   transform: rotate(180deg);
 }
 
-.cellCurrent-right, .body-right {
+.cellCurrent-right, .body-right, .tail-right {
     transform: rotate(0deg);
 }
 
