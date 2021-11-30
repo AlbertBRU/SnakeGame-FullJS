@@ -79,25 +79,39 @@ body {
   background-image: url("../img/snakebod.png");
   background-size: cover;
 }
-.turnTheSnake {
-  background-image: url("../img/snaketurn.png");
-  background-size: cover;
-}
 
-.cellCurrent-top, .body-top, .tail-top, .turn-left-top {
+.cellCurrent-top, .body-top, .tail-top {
   transform: rotate(-90deg);
 }
 
-.cellCurrent-bottom, .body-bottom, .tail-bottom, .turn-right-bottom, .turn-top-left, .turn-bot-right {
+.cellCurrent-bottom, .body-bottom, .tail-bottom {
   transform: rotate(90deg);
 }
 
-.cellCurrent-left, .body-left, .tail-left, .turn-right-top, .turn-bot-left {
+.cellCurrent-left, .body-left, .tail-left {
   transform: rotate(180deg);
 }
 
-.cellCurrent-right, .body-right, .tail-right {
+.cellCurrent-right, .body-right, .tail-right, .turnTheSnake {
     transform: rotate(0deg);
+}
+
+.turnTheSnake {
+  background-image: url("../img/snaketurn.png");
+  background-size: cover;
+  /* transform: rotate(0deg); */
+}
+
+.turnRtB-TtL  {
+  transform: rotate(90deg);
+}
+
+.turnRtT-BtL {
+  transform: rotate(180deg);
+}
+
+.turnBtR-LtT {
+  transform: rotate(-90deg);
 }
 
 .points, .start, .tryAgain {

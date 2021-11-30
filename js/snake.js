@@ -4,7 +4,7 @@ var snake = {
 
     snakeLength: 0,
     snakeDirection: 'right',
-    speedInMs: 500,
+    speedInMs: 200,
 
     autoMove: function() {
         document.querySelector('.start').style.display = "none";
@@ -149,27 +149,28 @@ var snake = {
 
             if (currentDirection =='left' && snake.snakeLength > 1) {
                 if (newDirection == 'top') {
-                    currentCell.classList.add('turnTheSnake', 'turn-left-top')
+                    currentCell.classList.add('turnTheSnake', 'turnBtR-LtT')
                 }else if (newDirection == 'bottom') {
+                    currentCell.classList.remove('body-left','tail-left') 
                     currentCell.classList.add('turnTheSnake')
                 }
             } else if (currentDirection =='right' && snake.snakeLength > 1) {
                 if (newDirection == 'top') {
-                    currentCell.classList.add('turnTheSnake', 'turn-right-top')
+                    currentCell.classList.add('turnTheSnake', 'turnRtT-BtL')
                 }else if (newDirection == 'bottom') {
-                    currentCell.classList.add('turnTheSnake', 'turn-right-bottom')
+                    currentCell.classList.add('turnTheSnake', 'turnRtB-TtL')
                 }
             } else if (currentDirection =='top' && snake.snakeLength > 1) {
                 if (newDirection == 'left') {
-                    currentCell.classList.add('turnTheSnake', 'turn-top-left')
+                    currentCell.classList.add('turnTheSnake', 'turnRtB-TtL')
                 }else if (newDirection == 'right') {
                     currentCell.classList.add('turnTheSnake')
                 }
             } else if (currentDirection =='bottom' && snake.snakeLength > 1) {
                 if (newDirection == 'left') {
-                    currentCell.classList.add('turnTheSnake', 'turn-bot-left')
+                    currentCell.classList.add('turnTheSnake', 'turnRtT-BtL')
                 }else if (newDirection == 'right') {
-                    currentCell.classList.add('turnTheSnake', 'turn-bot-right')
+                    currentCell.classList.add('turnTheSnake', 'turnBtR-LtT')
                 }
             }
 
@@ -177,7 +178,7 @@ var snake = {
 
             let timeToRemoveBody = snake.snakeLength*snake.speedInMs -snake.speedInMs;
             window.setTimeout(function() {            
-            currentCell.classList.remove('body', 'body-bottom', 'body-right', 'body-top', 'body-left','turnTheSnake', 'turn-left-top', 'turn-right-top', 'turn-right-bottom', 'turn-top-left', 'turn-bot-left', 'turn-bot-right' );
+            currentCell.classList.remove('body', 'body-bottom', 'body-right', 'body-top', 'body-left','turnTheSnake', 'turnRtB-TtL', 'turnRtT-BtL', 'turnBtR-LtT');
             }, timeToRemoveBody);
 
             let timeToRemoveTail = snake.snakeLength*snake.speedInMs;
